@@ -20,7 +20,7 @@ public class Humain {
 		this.nom = nom;
 	}
 
-	public  int getArgent() {
+	public int getArgent() {
 		return argent;
 	}
 
@@ -61,4 +61,3 @@ public class Humain {
 	}
 
 }
-
