@@ -20,7 +20,7 @@ public class Humain {
 		this.nom = nom;
 	}
 
-	public int getArgent() {
+	public  int getArgent() {
 		return argent;
 	}
 
@@ -38,16 +38,21 @@ public class Humain {
 		argent = getArgent() - 12;
 	}
 
-	private void acheter(String bien, int prix) {
-
+	public void acheter(String bien, int prix) {
+		parler("J'ai " + argent + " sous en poche. Je vais pouvoir m'offrir un " + bien + " à " + prix + " sous");
+		perdreArgent(prix);
 	}
 
-	private void gagnerArgent(int gain) {
-
+	protected int gagnerArgent(int gain) {
+		argent = getArgent();
+		argent = argent + gain;
+		return argent;
 	}
 
-	public void perdreArgent(int perte) {
-
+	protected int perdreArgent(int perte) {
+		argent = getArgent();
+		argent = argent - perte;
+		return argent;
 	}
 
 	public void parler(String texte) {
