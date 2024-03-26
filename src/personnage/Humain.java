@@ -28,7 +28,7 @@ public class Humain {
 		this.argent = argent;
 	}
 
-	private void direBonjour() {
+	public void direBonjour() {
 		parler("Bonjour ! Je m'appelle " + nom + "et j'aime boire du " + boissonfavorite + ".");
 
 	}
