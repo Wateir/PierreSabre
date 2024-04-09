@@ -2,13 +2,16 @@ package personnage;
 
 public class Humain {
 	private String nom;
-	private String boissonfavorite;
+	private String boissonFavorite;
 	private int argent;
+	private final int TAILLE_MEMOIRE = 30;
+	private int nombreConnaissance = 0;
+	private Humain[] maMemoire = new Humain[TAILLE_MEMOIRE];
 
 	public Humain(String nom, String boissonfavorite, int argent) {
 		super();
 		this.nom = nom;
-		this.boissonfavorite = boissonfavorite;
+		this.boissonFavorite = boissonfavorite;
 		this.argent = argent;
 	}
 
@@ -25,12 +28,12 @@ public class Humain {
 	}
 
 	public void direBonjour() {
-		parler("Bonjour ! Je m'appelle " + nom + "et j'aime boire du " + boissonfavorite + ".");
+		parler("Bonjour ! Je m'appelle " + nom + " et j'aime boire du " + boissonFavorite + ".");
 
 	}
 
 	public void boire() {
-		parler("Mmm, un bon verre de " + boissonfavorite + " ! Gloups !");
+		parler("Mmm, un bon verre de " + boissonFavorite + " ! Gloups !");
 		argent = getArgent() - 12;
 	}
 
@@ -49,14 +52,44 @@ public class Humain {
 		return argent;
 	}
 	
-	protected void faireConnaissanceAvec(Humain autrehumain) {
+	public void faireConnaissanceAvec(Humain autrehumain) {
+		direBonjour();
+		repondre(this);
+		memoriser(autrehumain);
+	}
+	
+
+	private void memoriser(Humain autrehumain) {
+		if (nombreConnaissance < TAILLE_MEMOIRE) {
+			maMemoire[nombreConnaissance] = autrehumain;
+			nombreConnaissance++;
+			
+		}
+		else {
+			for (int i = 0; i < TAILLE_MEMOIRE-1 ; i++) {
+				maMemoire[i] = maMemoire[i+1];
+				}
+			maMemoire[TAILLE_MEMOIRE] = autrehumain;
+		}
+	}
+
+	private void repondre(Humain humain) {
+		direBonjour();
+		memoriser(humain);
 		
-		
+	}
+	
+	public void listeConnaissance() {
+		parler("Je connais beaucoup de monde dont : ");
 	}
 
 	public void parler(String texte) {
 		System.out.println(nom + " : " + "« " + texte + "»");
 
+	}
+
+	public int getMemoirelongeur() {
+		return nombreConnaissance;
 	}
 
 }
