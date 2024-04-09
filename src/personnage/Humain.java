@@ -24,10 +24,6 @@ public class Humain {
 		return argent;
 	}
 
-	public void setArgent(int argent) {
-		this.argent = argent;
-	}
-
 	public void direBonjour() {
 		parler("Bonjour ! Je m'appelle " + nom + "et j'aime boire du " + boissonfavorite + ".");
 
@@ -44,15 +40,18 @@ public class Humain {
 	}
 
 	protected int gagnerArgent(int gain) {
-		argent = getArgent();
 		argent = argent + gain;
 		return argent;
 	}
 
 	protected int perdreArgent(int perte) {
-		argent = getArgent();
 		argent = argent - perte;
 		return argent;
+	}
+	
+	protected void faireConnaissanceAvec(Humain autrehumain) {
+		
+		
 	}
 
 	public void parler(String texte) {
