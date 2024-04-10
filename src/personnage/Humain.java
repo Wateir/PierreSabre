@@ -5,8 +5,8 @@ public class Humain {
 	private String boissonFavorite;
 	private int argent;
 	private final int TAILLE_MEMOIRE = 30;
-	private int nombreConnaissance = 0;
-	private Humain[] maMemoire = new Humain[TAILLE_MEMOIRE];
+	protected int nombreConnaissance = 0;
+	protected Humain[] maMemoire = new Humain[TAILLE_MEMOIRE];
 
 	public Humain(String nom, String boissonfavorite, int argent) {
 		super();
